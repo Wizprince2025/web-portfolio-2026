@@ -127,9 +127,26 @@ def build_home():
                     chip("Git"),
                     chip("GitHub"),
                     chip("Engineering"),
+                    chip("React Native"),
+                    chip("UI Development"),
                 ],
                 wrap=True,
             ),
+
+            ft.Container(height=20),
+            section_heading("Contact"),
+
+            card(ft.Column([
+                ft.Row([
+                    ft.Icon(ft.Icons.EMAIL, color=ACCENT, size=18),
+                    ft.Text("benisius45@gmail.com", size=13, color=TEXT),
+                ], spacing=10),
+                ft.Container(height=8),
+                ft.Row([
+                    ft.Icon(ft.Icons.CODE, color=ACCENT, size=18),
+                    ft.Text("github.com/Wizprince2025", size=13, color=TEXT),
+                ], spacing=10),
+            ], spacing=4)),
         ],
         spacing=12,
         scroll=ft.ScrollMode.AUTO,
@@ -334,67 +351,55 @@ def build_blog():
 
 def build_github():
     commits = [
-        ("#a3f1c2", "feat: add input validation for cost calculator", "Feb 14", "main"),
-        ("#b8e0f9", "fix: resolve off-by-one error in Mining tonnage loop", "Feb 19", "main"),
-        ("#c7d4aa", "refactor: extract shared helpers into helpers.py", "Feb 26", "main"),
-        ("#d91fa3", "test: 12 unit tests for Metallurgical module", "Feb 14", "main"),
-        ("#e5c310", "docs: update README with Civil module schema", "Feb 7",  "main"),
+        ("Jun 15, 2026", "Update SplashScreen.jsx",       "UI — redesigned splash screen layout and branding"),
+        ("Jun 15, 2026", "Update LoginScreen.jsx",        "UI — updated login form styling and input fields"),
+        ("Jun 15, 2026", "Update SupervisorDashboard.jsx","UI — built supervisor dashboard with role-based layout"),
+        ("Jun 15, 2026", "Update ReportFaultScreen.jsx",  "UI — fault reporting screen with form validation"),
+        ("Jun 15, 2026", "Update WorkerDashboard.jsx",    "UI — worker dashboard view with task display"),
+        ("Jun 8, 2026",  "Update README.md",              "docs — updated project README with setup instructions"),
+        ("Jun 8, 2026",  "Update AppNavigator.js",        "feat — configured app navigation between screens"),
+        ("Jun 8, 2026",  "Rename icon.png to icon.png",   "assets — replaced app icon with updated version"),
     ]
 
-    prs = [
-        ("PR #4",  "Civil Engineering ER diagram",         "Merged",   "Feb 7"),
-        ("PR #11", "Review: teammate's graph integration", "Reviewed", "Feb 22"),
-        ("PR #15", "Refactor shared utilities",            "Merged",   "Feb 26"),
-    ]
-
-    commit_rows = [
-        ft.Row([
+    commit_rows = []
+    for date, msg, desc in commits:
+        commit_rows.append(
             ft.Container(
-                content=ft.Text(sha[:7], size=10, color=ACCENT, font_family="monospace"),
-                bgcolor=ft.Colors.with_opacity(0.12, ACCENT),
-                border_radius=4,
-                padding=ft.Padding(left=6, right=6, top=2, bottom=2),
-            ),
-            ft.Text(msg, size=12, color=TEXT, expand=True, no_wrap=False),
-            ft.Text(date, size=11, color=MUTED),
-        ], spacing=8)
-        for sha, msg, date, branch in commits
-    ]
-
-    pr_rows = [
-        ft.Container(
-            content=ft.Row([
-                ft.Text(pr, size=12, weight=ft.FontWeight.BOLD, color=ACCENT2),
-                ft.Text(title, size=12, color=TEXT, expand=True),
-                chip(status, ACCENT if status == "Merged" else MUTED),
-                ft.Text(date, size=11, color=MUTED),
-            ], spacing=10),
-            bgcolor=SURFACE,
-            border=ft.Border(left=ft.BorderSide(1, BORDER), right=ft.BorderSide(1, BORDER), top=ft.BorderSide(1, BORDER), bottom=ft.BorderSide(1, BORDER)),
-            border_radius=8,
-            padding=ft.Padding(left=14, right=14, top=10, bottom=10),
+                content=ft.Column([
+                    ft.Row([
+                        ft.Container(
+                            content=ft.Text("VERIFIED", size=9, color=ACCENT,
+                                            weight=ft.FontWeight.BOLD),
+                            bgcolor=ft.Colors.with_opacity(0.12, ACCENT),
+                            border_radius=4,
+                            padding=ft.Padding(left=6, right=6, top=2, bottom=2),
+                        ),
+                        ft.Text(msg, size=12, color=TEXT, expand=True,
+                                weight=ft.FontWeight.W_500, no_wrap=False),
+                        ft.Text(date, size=11, color=MUTED),
+                    ], spacing=8),
+                    ft.Text(desc, size=11, color=MUTED),
+                ], spacing=3),
+                bgcolor=SURFACE,
+                border=ft.Border(
+                    left=ft.BorderSide(1, BORDER), right=ft.BorderSide(1, BORDER),
+                    top=ft.BorderSide(1, BORDER),  bottom=ft.BorderSide(1, BORDER),
+                ),
+                border_radius=8,
+                padding=ft.Padding(left=14, right=14, top=10, bottom=10),
+            )
         )
-        for pr, title, status, date in prs
-    ]
 
     return ft.Column([
         section_heading("GitHub Evidence", ACCENT),
-        ft.Text("Individual contribution trail — commits, pull requests, and impact.", size=13, color=MUTED),
+        ft.Text("Individual contribution trail — verified commits to 224032909/MechTek.", size=13, color=MUTED),
         ft.Container(height=12),
 
         card(ft.Column([
             ft.Text("Commit History", size=14, weight=ft.FontWeight.BOLD, color=TEXT),
-            ft.Text("Direct API pull — your commits to the main repository.", size=12, color=MUTED),
+            ft.Text("All commits verified under Wizprince2025 on the main branch.", size=12, color=MUTED),
             ft.Container(height=8),
-            ft.Column(commit_rows, spacing=10),
-        ], spacing=6)),
-
-        ft.Container(height=12),
-
-        card(ft.Column([
-            ft.Text("Pull Request Log", size=14, weight=ft.FontWeight.BOLD, color=TEXT),
-            ft.Container(height=8),
-            ft.Column(pr_rows, spacing=6),
+            ft.Column(commit_rows, spacing=6),
         ], spacing=6)),
 
         ft.Container(height=12),
@@ -402,11 +407,13 @@ def build_github():
         card(ft.Column([
             ft.Text("Impact Summary", size=14, weight=ft.FontWeight.BOLD, color=TEXT),
             ft.Text(
-                "My primary contribution was to the Metallurgical module: I implemented the "
-                "cost-calculation engine with proper input validation, ensuring that the formula "
-                "Total Cost = Σ(Qᵢ × Pᵢ) + Overheads was correctly enforced at runtime. "
-                "I also refactored three helper functions into a shared module used by both the "
-                "Mining and Civil engineering sections, reducing code duplication by ~40%.",
+                "My primary responsibility in the MechTek group project was UI development. "
+                "I designed and built five core screens of the application: the SplashScreen, "
+                "LoginScreen, SupervisorDashboard, ReportFaultScreen, and WorkerDashboard. "
+                "Each screen was built using React Native (JSX) with a focus on clean layout, "
+                "role-based navigation, and a consistent visual design across the app. "
+                "I also configured the AppNavigator.js to wire all screens together and "
+                "updated the project README to document the UI architecture for the team.",
                 size=13, color=MUTED, no_wrap=False,
             ),
         ], spacing=8)),
@@ -508,10 +515,4 @@ def main(page: ft.Page):
     )
 
 
-ft.app(
-    target=main,
-    view=ft.AppView.WEB_BROWSER,
-    port=int(os.environ.get("PORT", 8550)),
-    host="0.0.0.0",
-    assets_dir="assets"
-)
+ft.app(target=main, view=ft.AppView.WEB_BROWSER, port=int(os.environ.get("PORT", 8550)), host="0.0.0.0", assets_dir="assets")
