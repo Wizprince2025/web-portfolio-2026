@@ -508,4 +508,4 @@ def main(page: ft.Page):
     )
 
 
-ft.app(target=main, view=ft.AppView.WEB_BROWSER, port=8550, assets_dir="assets")
+ft.app(target=main, view=ft.AppView.WEB_BROWSER, port=int(os.environ.get("PORT", 8550)), assets_dir="assets")
