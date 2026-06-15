@@ -351,11 +351,11 @@ def build_blog():
 
 def build_github():
     commits = [
-        ("Jun 15, 2026", "Update SplashScreen.jsx",       "UI — redesigned splash screen layout and branding"),
-        ("Jun 15, 2026", "Update LoginScreen.jsx",        "UI — updated login form styling and input fields"),
-        ("Jun 15, 2026", "Update SupervisorDashboard.jsx","UI — built supervisor dashboard with role-based layout"),
-        ("Jun 15, 2026", "Update ReportFaultScreen.jsx",  "UI — fault reporting screen with form validation"),
-        ("Jun 15, 2026", "Update WorkerDashboard.jsx",    "UI — worker dashboard view with task display"),
+        ("Jun 01, 2026", "Update SplashScreen.jsx",       "UI — redesigned splash screen layout and branding"),
+        ("Jun 01, 2026", "Update LoginScreen.jsx",        "UI — updated login form styling and input fields"),
+        ("Jun 01, 2026", "Update SupervisorDashboard.jsx","UI — built supervisor dashboard with role-based layout"),
+        ("Jun 01, 2026", "Update ReportFaultScreen.jsx",  "UI — fault reporting screen with form validation"),
+        ("Jun 01, 2026", "Update WorkerDashboard.jsx",    "UI — worker dashboard view with task display"),
         ("Jun 8, 2026",  "Update README.md",              "docs — updated project README with setup instructions"),
         ("Jun 8, 2026",  "Update AppNavigator.js",        "feat — configured app navigation between screens"),
         ("Jun 8, 2026",  "Rename icon.png to icon.png",   "assets — replaced app icon with updated version"),
